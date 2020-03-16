@@ -4,8 +4,8 @@ import VueI18n from 'vue-i18n'
 import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import ElementLocale from 'element-ui/lib/locale'
-import en from './lang/en'
-import zh from './lang/zh-CN'
+import en from '@/assets/lang/en'
+import zh from '@/assets/lang/zh-CN'
 
 Vue.use(VueI18n)
 
