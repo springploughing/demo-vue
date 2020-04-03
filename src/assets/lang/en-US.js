@@ -6,4 +6,5 @@ exports.default = {
     default: "default",
     checkDate: "checkDate",
     language: "language",
+    hint: "This is hint!"
 };

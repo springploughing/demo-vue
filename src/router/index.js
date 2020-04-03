@@ -1,10 +1,13 @@
 import VueRouter from 'vue-router';
-import ElementTest from '../components/ElementTest';
-import Admin from '../views/Admin';
+import Test from '../components/Test';
+import Admin from '../views/admin';
+import Login from '../views/login';
 
 const routes = [
-    { path: '/test', component: ElementTest },
-    { path: '/admin', component: Admin }
+    { path: '/test', component: Test },
+    { path: '/admin', component: Admin },
+    { path: '/login', component: Login },
+    { path: '/', redirect: '/login'}
 ]
 
 const router = new VueRouter({
