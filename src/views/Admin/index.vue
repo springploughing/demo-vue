@@ -59,7 +59,7 @@
             <div :style="{ width: '300px', border: '1px solid #d9d9d9', borderRadius: '4px' }">
               <a-calendar :fullscreen="false" @panelChange="onPanelChange" />
             </div>
-            <div>test9</div>
+            <div>test10</div>
           </div>
         </a-layout-content>
         <a-layout-footer style="text-align: center">Ant Design ©2018 Created by Ant UED</a-layout-footer>
