@@ -9,12 +9,11 @@ job1:
   only:
     - ant-of-vue    #只有ant-of-vue分支提交代码才会执行这个任务
   script:
-    - echo "cd /home/gitlab-runner/builds/fgpN_gP2/0/root/vue-hello-world"
+    - chmod -R 777 /home/gitlab-runner
     - cd /home/gitlab-runner/builds/fgpN_gP2/0/root/vue-hello-world
-    - echo "npm install"
     - npm install
-    - echo "npm run build"
     - npm run build
+    - docker build -t vue-nginx:v1.0.0 dist/
   allow_failure: true #允许失败，即不影响下步构建   
 
 job2:
@@ -24,7 +23,16 @@ job2:
   script:
     - echo "I am job2"
     - echo "I am in test stage"
-  allow_failure: true #允许失败，即不影响下步构建  
+  allow_failure: true #允许失败，即不影响下步构建
+  
+job2:
+  stage: deploy    #如果此处没有定义stage，其默认也是test
+  only:
+    - ant-of-vue    #只有ant-of-vue分支提交代码才会执行这个任务
+  script:
+    - echo "I am job2"
+    - echo "I am in test stage"
+  allow_failure: true #允许失败，即不影响下步构建 
 
 # 定义 job（任务）
 # job1:
