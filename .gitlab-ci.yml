@@ -9,6 +9,7 @@ job1:
   only:
     - ant-of-vue    #只有ant-of-vue分支提交代码才会执行这个任务
   script:
+    - ls -al
     - cp -r builds/fgpN_gP2/0/root/vue-hello-world .
     - cd vue-hello-world
     - npm install
