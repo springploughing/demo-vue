@@ -9,10 +9,11 @@ job1:
   only:
     - ant-of-vue    #只有ant-of-vue分支提交代码才会执行这个任务
   script:
-    - cd /home/gitlab-runner/builds/fgpN_gP2/0/root/vue-hello-world
+    - cp -r /home/gitlab-runner/builds/fgpN_gP2/0/root/vue-hello-world /home/
+    - cd /home/vue-hello-world
     - npm install
     - npm run build
-    - docker build -t vue-nginx:v1.0.0 dist/
+    - docker build -t vue-nginx:v1.0.0 docker/
   allow_failure: true #允许失败，即不影响下步构建   
 
 job2:
