@@ -8,7 +8,7 @@ stages:
 job1:
   stage: test
   tags:
-    - my-tags #只有标签为XX的runner才会执行这个任务
+    - my-tag #只有标签为XX的runner才会执行这个任务
   only:        
     - dev    #只有dev分支提交代码才会执行这个任务。也可以是分支名称或触发器名称
     - /^future-.*$/ #正则表达式，只有future-开头的分支才会执行
