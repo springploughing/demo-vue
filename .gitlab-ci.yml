@@ -13,13 +13,13 @@ job1:
     - npm install
     - npm run build
     - cp docker/Dockerfile .
-    - docker build -t nginx-vue:latest .
-    - docker tag nginx-vue:latest 192.168.2.88:9999/library/nginx-vue:latest
+    - docker build -t nginx-vue:v1 .
+    - docker tag nginx-vue:latest 192.168.2.88:9999/library/nginx-vue:v1
     - docker login http://192.168.2.88:9999 -u admin -p Harbor12345
-    - docker push 192.168.2.88:9999/library/nginx-vue:latest
+    - docker push 192.168.2.88:9999/library/nginx-vue:v1
     # - kubectl create deployment kubernetes-nginx-vue --image=192.168.2.88:9999/library/nginx-vue:latest
-    - kubectl set image deployments/kubernetes-nginx-vue nginx-vue=192.168.2.88:9999/library/nginx-vue:latest
-    - kubectl expose deployment/kubernetes-nginx-vue --type="NodePort" --port=80 --target-port=80
+    - kubectl set image deployments/kubernetes-nginx-vue nginx-vue=192.168.2.88:9999/library/nginx-vue:v1
+    # - kubectl expose deployment/kubernetes-nginx-vue --type="NodePort" --port=80 --target-port=80
   allow_failure: true #允许失败，即不影响下步构建   
 
 job2:
