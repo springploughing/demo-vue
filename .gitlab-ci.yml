@@ -14,7 +14,7 @@ job1:
     - npm run build
     - cp docker/Dockerfile .
     - docker build -t nginx-vue:latest .
-    - docker tag nginx-vue:latest
+    - docker tag nginx-vue:latest 192.168.2.88:9999/library/nginx-vue:latest
     - docker login http://192.168.2.88:9999 -u admin -p Harbor12345
     - docker push 192.168.2.88:9999/library/nginx-vue:latest
     # - kubectl create deployment kubernetes-nginx-vue --image=192.168.2.88:9999/library/nginx-vue:latest
