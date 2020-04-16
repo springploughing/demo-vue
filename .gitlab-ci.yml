@@ -124,4 +124,4 @@ cache:    #缓存
   untracked: true    #缓存所有Git未跟踪的文件
   paths:    #以下2个文件夹会被缓存起来，下次构建会解压出来
     - node_modules/
-    - dist/
+    # - dist/
