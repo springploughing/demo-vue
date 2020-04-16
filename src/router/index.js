@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 import Test from '@/components/Test';
-import Admin from '@/views/admin/index';
-import Login from '@/views/login/index';
+import Admin from '@/views/admin';
+import Login from '@/views/login';
 
 const routes = [
     { path: '/test', component: Test },

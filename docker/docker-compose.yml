@@ -1,0 +1,10 @@
+version: 'v1.0.1'
+services:
+  vue-hello-world:
+    image: nginx
+    context: ../
+    dockerfile: ./dcoker/Dockerfile
+    container_name: vue-hello-world
+    restart: always
+    ports:
+      - '8080:80'

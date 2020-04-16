@@ -12,7 +12,7 @@ job1:
     - ls -al
     - npm install
     - npm run build
-    - docker build -t vue-nginx:v1.0.0 docker/
+    - docker-compose build  docker/
   allow_failure: true #允许失败，即不影响下步构建   
 
 job2:
