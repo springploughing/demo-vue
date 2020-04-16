@@ -14,7 +14,11 @@ job1:
     - npm run build
     - cp docker/Dockerfile .
     - docker build -t nginx-vue:latest .
-
+    - docker login http://192.168.2.88:9999 -u admin -p Harbor12345
+    - docker push 192.168.2.88:9999/library/nginx-vue:latest
+    # - kubectl create deployment kubernetes-nginx-vue --image=192.168.2.88:9999/library/nginx-vue:latest
+    - kubectl set image deployments/kubernetes-nginx-vue kubernetes-nginx-vue=192.168.2.88:9999/library/nginx-vue:latest
+    - kubectl expose deployment/kubernetes-nginx-vue --type="NodePort" --port=80 --target-port=80
   allow_failure: true #允许失败，即不影响下步构建   
 
 job2:
