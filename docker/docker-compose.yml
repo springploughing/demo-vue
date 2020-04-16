@@ -1,7 +1,7 @@
 version: '2'
 services:
   vue-hello-world:
-    image: nginx
+    image: nginx-vue:v1.0.0
     container_name: vue-hello-world
     restart: always
     ports:
