@@ -13,9 +13,8 @@ job1:
     - npm install
     - npm run build
     - cp docker/Dockerfile .
-    - docker build -t nginx-vue:v1.0.0 .
-    - cd docker
-    - docker-compose up -d
+    - docker build -t nginx-vue:latest .
+
   allow_failure: true #允许失败，即不影响下步构建   
 
 job2:
