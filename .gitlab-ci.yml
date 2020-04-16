@@ -12,7 +12,8 @@ job1:
     - ls -al
     - npm install
     - npm run build
-    - docker-compose build  docker/
+    - cd docker
+    - docker-compose up -d
   allow_failure: true #允许失败，即不影响下步构建   
 
 job2:
