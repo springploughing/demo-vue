@@ -1,42 +1,49 @@
 # 定义 stages（阶段）。任务将按此顺序执行。
 stages:
+  - lint
   - build
   - test
   - deploy
 
 job1:
-  stage: build    #如果此处没有定义stage，其默认也是test
+  stage: lint    #如果此处没有定义stage，其默认也是test
   only:
     - ant-of-vue    #只有ant-of-vue分支提交代码才会执行这个任务
   script:
     - npm install
+    - npm run lint
+  allow_failure: true #允许失败，即不影响下步构建
+
+job2:
+  stage: build    #如果此处没有定义stage，其默认也是test
+  only:
+    - ant-of-vue    #只有ant-of-vue分支提交代码才会执行这个任务
+  script:
     - npm run build
     - cp docker/Dockerfile .
     - docker build -t nginx-vue:latest .
     - docker tag nginx-vue:latest 192.168.2.88:9999/library/nginx-vue:${RE_VERSION}
     - docker login http://192.168.2.88:9999 -u admin -p Harbor12345
     - docker push 192.168.2.88:9999/library/nginx-vue:${RE_VERSION}
-    # - kubectl create deployment kubernetes-nginx-vue --image=192.168.2.88:9999/library/nginx-vue:latest
-    - kubectl set image deployments/kubernetes-nginx-vue nginx-vue=192.168.2.88:9999/library/nginx-vue:${RE_VERSION}
-    # - kubectl expose deployment/kubernetes-nginx-vue --type="NodePort" --port=80 --target-port=80
-  allow_failure: true #允许失败，即不影响下步构建   
+    
 
-job2:
+job3:
   stage: test    #如果此处没有定义stage，其默认也是test
   only:
     - ant-of-vue    #只有ant-of-vue分支提交代码才会执行这个任务
   script:
-    - echo "I am job2"
-    - echo "I am in test stage"
+    - echo "I am test"
+    - echo "Here, run the test script!"
   allow_failure: true #允许失败，即不影响下步构建
   
-job2:
+job4:
   stage: deploy    #如果此处没有定义stage，其默认也是test
   only:
     - ant-of-vue    #只有ant-of-vue分支提交代码才会执行这个任务
   script:
-    - echo "I am job2"
-    - echo "I am in test stage"
+    # - kubectl create deployment kubernetes-nginx-vue --image=192.168.2.88:9999/library/nginx-vue:latest
+    - kubectl set image deployments/kubernetes-nginx-vue nginx-vue=192.168.2.88:9999/library/nginx-vue:${RE_VERSION}
+    # - kubectl expose deployment/kubernetes-nginx-vue --type="NodePort" --port=80 --target-port=80
   allow_failure: true #允许失败，即不影响下步构建 
 
 # 定义 job（任务）
@@ -113,7 +120,7 @@ after_script:
   - echo "每个job之后都会执行"    
   
 variables:    #变量
-  RE_VERSION: "v45"
+  RE_VERSION: "v46"
   # DATABASE_URL: "postgres://postgres@postgres/my_database"  #在job中可以用${DATABASE_URL}来使用这个变量。常用的预定义变量有CI_COMMIT_REF_NAME（项目所在的分支或标签名称），CI_JOB_NAME（任务名称），CI_JOB_STAGE（任务阶段）
   # GIT_STRATEGY: "none" #GIT策略，定义拉取代码的方式，有3种：clone/fetch/none，默认为clone，速度最慢，每步job都会重新clone一次代码。我们一般将它设置为none，在具体任务里设置为fetch就可以满足需求，毕竟不是每步都需要新代码，那也不符合我们测试的流程
 

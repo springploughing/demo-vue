@@ -59,17 +59,16 @@
             <div :style="{ width: '300px', border: '1px solid #d9d9d9', borderRadius: '4px' }">
               <a-calendar :fullscreen="false" @panelChange="onPanelChange" />
             </div>
-            <div>test45</div>
           </div>
         </a-layout-content>
-        <a-layout-footer style="text-align: center">Ant Design ©2018 Created by Ant UED</a-layout-footer>
+        <a-layout-footer style="text-align: center">Ant Design ©2018 Created by Ant UED v46</a-layout-footer>
       </a-layout>
     </a-layout>
   </a-config-provider>
 </template>
 
 <script>
-import HelloWorld from "@/components/HelloWorld.vue";
+import helloWorld from "@/components/hello-world";
 import zhCN from "ant-design-vue/lib/locale-provider/zh_CN";
 import moment from "moment";
 import "moment/locale/zh-cn";
@@ -77,7 +76,7 @@ moment.locale("zh-cn");
 export default {
   name: "Admin",
   components: {
-    HelloWorld
+    helloWorld
   },
   data() {
     return {
