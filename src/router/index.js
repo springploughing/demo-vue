@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 import ElementTest from '../components/ElementTest';
-import Admin from '../views/admin';
+import Admin from '../views/Admin';
 
 const routes = [
     { path: '/test', component: ElementTest },
