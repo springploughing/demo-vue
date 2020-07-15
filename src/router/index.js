@@ -5,7 +5,7 @@ import Login from '@/views/login';
 const routes = [
     { path: '/admin', component: Admin },
     { path: '/login', component: Login },
-    { path: '/', redirect: '/login'}
+    { path: '/*', redirect: '/login'}
 ]
 
 const router = new VueRouter({

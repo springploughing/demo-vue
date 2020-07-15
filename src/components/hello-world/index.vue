@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'helloWorld',
+  name: 'HelloWorld',
   props: {
     msg: String,
     hint: String

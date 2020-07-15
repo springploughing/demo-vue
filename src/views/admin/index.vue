@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import helloWorld from "@/components/hello-world";
+import HelloWorld from "@/components/hello-world";
 import zhCN from "ant-design-vue/lib/locale-provider/zh_CN";
 import moment from "moment";
 import "moment/locale/zh-cn";
@@ -76,7 +76,7 @@ moment.locale("zh-cn");
 export default {
   name: "Admin",
   components: {
-    helloWorld
+    HelloWorld
   },
   data() {
     return {
